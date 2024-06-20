@@ -1,0 +1,34 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns="sap.m" controllerName="tcs.fin.ap.controller.View2">
+    <Page title="View 2" showNavButton="true" navButtonPress="onBack">
+        <content>
+            <ObjectHeader title="{PRODUCT_ID}" intro="{DESCRIPTION}" number="{PRICE}" numberUnit="{CURRENCY_CODE}"
+            icon="{image}">
+                <attributes>
+                    <ObjectAttribute text="{/calculated}"></ObjectAttribute>
+                </attributes>
+            </ObjectHeader>
+            <IconTabBar>
+                <items>
+                    <IconTabFilter text="More Info" icon="sap-icon://warning">
+                        <core:Fragment fragmentName="tcs.fin.ap.fragments.moreInfo" type="XML" />
+
+                    </IconTabFilter>
+                    <IconTabFilter text="Suppliers" icon="sap-icon://supplier">
+                        <core:Fragment fragmentName="tcs.fin.ap.fragments.supplier" type="XML" />
+                    </IconTabFilter>
+                    <IconTabFilter text="Cities" icon="sap-icon://home">
+                        <core:Fragment fragmentName="tcs.fin.ap.fragments.cities" type="XML" />
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+            <!-- <Button text="Go Back" press="onBack" /> -->
+        </content>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer ></ToolbarSpacer>
+                <Button  text="Save" type="Accept" icon="sap-icon://save" press="onSave"></Button>
+                <Button text="Cancel" type="Reject" icon="sap-icon://cancel" press="onCancel"></Button>
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

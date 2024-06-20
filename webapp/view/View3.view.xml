@@ -1,0 +1,42 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core"
+xmlns:f="sap.ui.layout.form" xmlns="sap.m" 
+ xmlns:viz="sap.viz.ui5.controls"
+ xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data"
+controllerName="tcs.fin.ap.controller.View3">
+    <Page title="View 3" showNavButton="true" navButtonPress="onBack">
+        <content>
+            <ObjectHeader title="{name}" intro="{city}" number="{noOfStores}" 
+            numberUnit="{person} {contactNo}"></ObjectHeader>
+            <Select id="chartType" selectedKey="{/chartType}">
+                <items>
+                    <core:Item text="Column" key="column" />
+                    <core:Item text="Donut" key="donut" />
+                    <core:Item text="Line" key="line" />
+                </items>
+            </Select>
+            <viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}"
+                height='60%' width="60%" vizType='{/chartType}'>
+                <viz:dataset>
+                    <viz.data:FlattenedDataset data="{specialty}">
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition name="Name"
+                                value="{name}" />
+                        </viz.data:dimensions>
+                        <viz.data:measures>
+                            <viz.data:MeasureDefinition name="Quantity"
+                                value="{supply}" />
+                        </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+
+                <viz:feeds>
+                    <viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" type="Measure"
+                        values="Quantity" />
+                    <viz.feeds:FeedItem id='categoryAxisFeed' uid="categoryAxis" type="Dimension"
+                        values="Name" />
+                </viz:feeds>
+
+            </viz:VizFrame>
+        </content>
+    </Page>
+</mvc:View>

@@ -1,0 +1,21 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form"
+                         xmlns="sap.m">
+<!-- Mandatory to select one item, by default first item is selected -->
+    <Select id="dropdown" items="{/cities}">
+        <items>
+            <core:Item text="{name}" key="{name}" />
+        </items>
+    </Select>
+    <!-- Combobox = input + dropdown, allow to enter data which is not there -->
+    <ComboBox id="combox" items="{/cities}">
+        <items>
+            <core:Item text="{name}" key="{name}" />
+        </items>
+    </ComboBox>
+    <!-- Allows multiple selection of data -->
+    <MultiComboBox id="multicombo" items="{/cities}">
+        <items>
+            <core:Item text="{name}" key="{name}" />
+        </items>
+    </MultiComboBox>
+</core:FragmentDefinition>

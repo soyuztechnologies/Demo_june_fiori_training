@@ -1,0 +1,122 @@
+{
+    "sap.app": {
+        "id": "tcs.fin.ap",
+        "type": "application",
+        "applicationVersion": {"version": "1.0.0"},
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "i18n": "i18n/i18n.properties",
+        "dataSources": {
+            "anubhavService": {
+                "uri": "/sap/opu/odata/sap/ZJUN_ODATA_SRV/",
+                "type": "OData",
+                "settings": {"odataVersion": "2.0"}
+            }
+        }
+    },
+    "sap.ui": {
+        "supportedThemes": ["sap_fiori_3_dark","sap_horizon"],
+        "fullWidth": true,
+        "deviceTypes":{
+            "desktop": true,
+            "phone": true,
+            "tablet": true
+        },
+        "technology": "UI5"
+    },
+    "sap.ui5":{
+        "dependencies": {
+            "minUI5Version":"1.122.2",
+            "libs": {
+                "sap.m": {"minVersion": "1.122.2"},
+                "sap.ui.layout": {"minVersion": "1.122.2"}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "rootView":{
+            "viewName": "tcs.fin.ap.view.App",
+            "id": "idRoot",
+            "type": "XML"
+        },
+        "routing": {
+            "config":{
+                "viewPath": "tcs.fin.ap.view",
+                "viewType": "XML",
+                "controlId": "idAppCon",
+                "clearControlAggregation": true       
+            },
+            "routes":[
+                {
+                    "pattern": "",
+                    "name": "home",
+                    "target":["narendra","modi"]
+                },
+                {
+                    "pattern": "fruits/{fruitId}",
+                    "name": "detail",
+                    "target": ["narendra","putin"]
+                },
+                {
+                    "pattern": "supplier/{suppId}",
+                    "name": "supplier",
+                    "target":["narendra","trump"]
+                },
+                {
+                    "pattern": "AddProducts",
+                    "name": "add",
+                    "target":["narendra","biden"]
+                }
+            ],
+            "targets": {
+                "narendra":{
+                    "id": "idView1",
+                    "viewName": "View1",
+                    "controlAggregation": "masterPages"
+                },
+                "modi":{
+                    "id": "idEmpty",
+                    "viewName": "Empty",
+                    "controlAggregation": "detailPages"
+                },
+                "putin":{
+                    "id": "idView2",
+                    "viewName": "View2",
+                    "controlAggregation": "detailPages"
+                },
+                "trump":{
+                    "id": "idView3",
+                    "viewName": "View3",
+                    "controlAggregation": "detailPages"
+                },
+                "biden":{
+                    "id": "idAdd",
+                    "viewName": "Add",
+                    "controlAggregation": "detailPages"
+                }
+            }
+        },
+        "models": {
+            "i18n":{
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleUrl": "i18n/i18n.properties"
+                }
+            },
+            "":{
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "dataSource": "anubhavService",
+                "settings": {}
+            },
+            "fruits": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "models/fruits.json",
+                "settings": {
+
+                }
+            }
+        }
+    }
+}

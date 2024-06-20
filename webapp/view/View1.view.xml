@@ -1,0 +1,42 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="tcs.fin.ap.controller.View1">
+    <Page title="View 1">
+        <headerContent>
+            <Button icon="sap-icon://action" press="onGoTo"></Button>
+        </headerContent>
+        <content>
+            <SearchField id="idSearch" search="onSearch"></SearchField>
+            <List id="idList" items="{path : '/ProductSet' }" growing="true" growingThreshold="10"
+            selectionChange="onItemPress" mode="SingleSelectMaster" delete="onItemDelete">
+                <headerToolbar>
+                    <Toolbar >
+                        <ToolbarSpacer ></ToolbarSpacer>
+                        <Button icon="sap-icon://delete" press="onItemsDelete"></Button>
+                    </Toolbar>
+                </headerToolbar>
+                <items>
+                   <ObjectListItem title="{PRODUCT_ID}" intro="{NAME} ({CATEGORY})" number="{PRICE}" numberUnit="{CURRENCY_CODE}"
+                   icon="{image}" type="Inactive">
+                   <attributes>
+                        <ObjectAttribute title="dim unit" text="{DIM_UNIT}"></ObjectAttribute>
+                        <ObjectAttribute title="supplier" text="{SUPPLIER_ID}"></ObjectAttribute>
+                   </attributes>
+                   <firstStatus>
+                        <ObjectStatus text="{path: 'TYPE_CODE', 
+                                             formatter: '.formatter.getStatus'
+                        }" state="{path: 'availability', 
+                                   formatter: '.formatter.getState'
+                        }"></ObjectStatus>
+                   </firstStatus>
+                   </ObjectListItem>
+                </items>
+            </List>
+            <!-- <Button text="Go To Next" press="onGoTo" /> -->
+        </content>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer ></ToolbarSpacer>
+                <Button icon="sap-icon://add" text="Add" press="onAddProduct"></Button>
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

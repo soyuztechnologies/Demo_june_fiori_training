@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <!-- UI5 bootstraping -->
+        <!-- A namespace make our app unique in the world -->
+        <!-- companyname.area.project -->
+        <script src="https://ui5.sap.com/resources/sap-ui-core.js"
+                data-sap-ui-libs="sap.m"
+                data-sap-ui-theme="sap_horizon"
+                data-sap-ui-resourceroots='{
+                    "tcs.fin.ap" : "./"
+                }'
+                data-sap-ui-bindingSyntax="complex"
+        ></script>
+        <script>
+
+            //We are not creating any view object here
+            //no productive code like view
+            //Only setting up testing code for Component.js
+            var oComponentCon = new sap.ui.core.ComponentContainer({
+                name: "tcs.fin.ap"
+            });
+
+            oComponentCon.placeAt("content");
+
+        </script>
+    </head>
+    <body class="sapUiBody">
+        <div id="content"></div>
+    </body>
+</html>
